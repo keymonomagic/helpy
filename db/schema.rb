@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161204162759) do
+ActiveRecord::Schema.define(version: 20161221101313) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -154,14 +154,15 @@ ActiveRecord::Schema.define(version: 20161204162759) do
     t.integer  "user_id"
     t.text     "body"
     t.string   "kind"
-    t.boolean  "active",      default: true
-    t.datetime "created_at",                 null: false
-    t.datetime "updated_at",                 null: false
-    t.integer  "points",      default: 0
-    t.string   "attachments", default: [],                array: true
+    t.boolean  "active",             default: true
+    t.datetime "created_at",                        null: false
+    t.datetime "updated_at",                        null: false
+    t.integer  "points",             default: 0
+    t.string   "attachments",        default: [],                array: true
     t.string   "cc"
     t.string   "bcc"
     t.text     "raw_email"
+    t.string   "keymono_message_id"
   end
 
   create_table "searches", force: :cascade do |t|
@@ -225,6 +226,7 @@ ActiveRecord::Schema.define(version: 20161204162759) do
     t.datetime "updated_at",                         null: false
     t.string   "locale"
     t.integer  "doc_id",           default: 0
+    t.string   "keymono_chat_id"
   end
 
   create_table "users", force: :cascade do |t|

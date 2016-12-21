@@ -21,6 +21,7 @@ module API
           requires :kind, type: String, desc: "The kind of post, either 'reply' or 'note'"
           optional :cc, type: String, desc: "Comma separated list of emails to CC"
           optional :bcc, type: String, desc: "Comma separated list of emails to BCC"
+          optional :keymono_message_id, type: String, desc: "Message ID for corresponding post"
         end
         post "", root: :posts do
           post = Post.create!(
@@ -29,7 +30,8 @@ module API
             user_id: permitted_params[:user_id],
             kind: permitted_params[:kind],
             cc: permitted_params[:cc],
-            bcc: permitted_params[:bcc]
+            bcc: permitted_params[:bcc],
+            keymono_message_id: permitted_params[:keymono_message_id]
           )
           present post, with: Entity::Post
         end
