@@ -83,6 +83,7 @@ module API
           requires :body, type: String, desc: "The post body"
           optional :team_list, type: String, desc: "The group that this ticket is assigned to"
           requires :user_id, type: Integer, desc: "the User ID"
+          optional :metadata, type: String, desc: "Metadata string"
         end
 
         post "", root: :topics do
@@ -97,7 +98,8 @@ module API
           ticket.posts.create!(
             body: params[:body],
             user_id: params[:user_id],
-            kind: 'first'
+            kind: 'first',
+            metadata: params[:metadata]
           )
           present ticket, with: Entity::Topic, posts: true
         end

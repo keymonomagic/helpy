@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161204162759) do
+ActiveRecord::Schema.define(version: 20161221081652) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -162,6 +162,7 @@ ActiveRecord::Schema.define(version: 20161204162759) do
     t.string   "cc"
     t.string   "bcc"
     t.text     "raw_email"
+    t.string   "metadata"
   end
 
   create_table "searches", force: :cascade do |t|
