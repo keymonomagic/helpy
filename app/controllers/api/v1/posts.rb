@@ -21,7 +21,6 @@ module API
           requires :kind, type: String, desc: "The kind of post, either 'reply' or 'note'"
           optional :cc, type: String, desc: "Comma separated list of emails to CC"
           optional :bcc, type: String, desc: "Comma separated list of emails to BCC"
-          optional :metadata, type: String, desc: "Metadata string"
         end
         post "", root: :posts do
           post = Post.create!(
@@ -30,8 +29,7 @@ module API
             user_id: permitted_params[:user_id],
             kind: permitted_params[:kind],
             cc: permitted_params[:cc],
-            bcc: permitted_params[:bcc],
-            metadata: permitted_params[:metadata]
+            bcc: permitted_params[:bcc]
           )
           present post, with: Entity::Post
         end
