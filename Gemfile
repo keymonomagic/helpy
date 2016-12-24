@@ -142,6 +142,8 @@ gem "recaptcha", require: "recaptcha/rails"
 
 gem 'best_in_place', '~> 3.0.1'
 
+gem 'helpy_slack', github: 'keymonomagic/helpy_slack', branch: 'master'
+
 group :development, :test do
   # Audit Gemfile for security vulnerabilities
   gem 'bundler-audit', require: false
