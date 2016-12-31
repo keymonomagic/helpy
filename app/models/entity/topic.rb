@@ -19,6 +19,7 @@ module Entity
     expose :doc_id, documentation: { type: "Integer" }
     expose :locale, documentation: { type: "String", desc: "The locale used when the author created the Topic." }
     expose :team_list
+    expose :keymono_chat_id, documentation: { type: "String", desc: "Chat ID associated with ticket" }
     expose :posts, using: Entity::Post, if: { posts: true }
   end
 end

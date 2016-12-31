@@ -9,6 +9,8 @@ module Entity
     expose :created_at
     expose :updated_at
     expose :points, documentation: { type: "Integer" }
+    expose :attachments, documentation: { desc: "The images is attached of ticket" }
+    expose :keymono_message_id, documentation: { type: "String", desc: "Message ID associated with post" }
     expose :cc, documentation: { type: "String", desc: "Comma separated list of emails to CC" }
     expose :bcc, documentation: { type: "String", desc: "Comma separated list of emails to BCC" }
     expose :raw_email, documentation: { desc: "The original full raw email body" }
