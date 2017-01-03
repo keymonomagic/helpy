@@ -83,6 +83,7 @@ module API
           requires :body, type: String, desc: "The post body"
           optional :team_list, type: String, desc: "The group that this ticket is assigned to"
           requires :user_id, type: Integer, desc: "the User ID"
+          optional :attachments, desc: "The images is attached of ticket"
           optional :keymono_chat_id, type: String, desc: "Chat ID associated with ticket"
           optional :keymono_message_id, type: String, desc: "Message ID associated with post"
         end
@@ -90,18 +91,19 @@ module API
         post "", root: :topics do
           ticket = Topic.create!(
             forum_id: 1,
-            name: params[:name],
-            user_id: params[:user_id],
+            name: permitted_params[:name],
+            user_id: permitted_params[:user_id],
             current_status: 'new',
             private: true,
-            team_list: params[:team_list],
-            keymono_chat_id: params[:keymono_chat_id]
+            team_list: permitted_params[:team_list],
+            keymono_chat_id: permitted_params[:keymono_chat_id]
           )
           ticket.posts.create!(
-            body: params[:body],
-            user_id: params[:user_id],
+            body: permitted_params[:body],
+            user_id: permitted_params[:user_id],
             kind: 'first',
-            keymono_message_id: params[:keymono_message_id]
+            attachments: permitted_params[:attachments],
+            keymono_message_id: permitted_params[:keymono_message_id]
           )
           present ticket, with: Entity::Topic, posts: true
         end
